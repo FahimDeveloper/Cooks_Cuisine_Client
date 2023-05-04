@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active {
+    @apply border-b-2 border-b-primary
+}
+
+.hoverEffect {
+    @apply transition-all duration-75 ease-linear
+}
