@@ -2,7 +2,7 @@ import React from 'react';
 
 const BannerSection = () => {
     return (
-        <div className='home'>
+        <div className='home bg-black bg-opacity-50 bg-blend-overlay'>
             <div className='container h-screen mx-auto flex items-center'>
                 <div className='w-3/4 text-base-100 space-y-5'>
                     <h2 className='text-7xl'>

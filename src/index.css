@@ -15,3 +15,20 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+.chefBanner {
+    background-image: url("/src/assets/images/chefBanner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.singleChef {
+    background-image: url("/src/assets/images/singleChef.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+}
+
+.chef:hover .view {
+    @apply text-primary
+}

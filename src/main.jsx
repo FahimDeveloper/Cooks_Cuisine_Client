@@ -28,7 +28,11 @@ const router = createBrowserRouter([
         element: <Chefs />,
         loader: () => fetch("/data.json")
       },
-      { path: "/chef/:id/view_recipies", element: <ChefDetails /> },
+      {
+        path: "/chef/:id/view_recipies",
+        element: <ChefDetails />,
+        loader: () => fetch("/data.json")
+      },
       { path: "user/login", element: <Login /> },
       { path: "user/registration", element: <Registration /> }
     ]
