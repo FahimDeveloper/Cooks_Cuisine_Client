@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import LoadSpinner from '../LoadSpinner/LoadSpinner';
 
 const Login = () => {
+    const [load, setLoad] = useState(true);
+    setTimeout(() => {
+        setLoad(false)
+    }, 800)
+    if (load === true) {
+        return <LoadSpinner />
+    }
     return (
         <div className='container mx-auto flex justify-center items-center h-screen'>
             <div className='space-y-6 border border-primary py-10 px-16 rounded-lg'>

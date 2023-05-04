@@ -1,7 +1,16 @@
 import React from 'react';
+import { useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
+import LoadSpinner from '../LoadSpinner/LoadSpinner';
 
 const ChefDetails = () => {
+    const [load, setLoad] = useState(true);
+    setTimeout(() => {
+        setLoad(false)
+    }, 800)
+    if (load === true) {
+        return <LoadSpinner />
+    }
     const { id } = useParams();
     const chefDetailsData = useLoaderData();
     const findChefData = chefDetailsData.find(Details => Details.id == id);
