@@ -9,9 +9,9 @@ import {
 import Home from './components/Home/Home.jsx';
 import Blog from './components/Blog/Blog.jsx';
 import Chefs from './components/Chefs/Chefs.jsx';
-import Chef from './components/Chefs/Chef.jsx';
 import Login from './components/Login/Login.jsx';
 import Registration from './components/Login/Registration.jsx';
+import ChefDetails from './components/Chefs/ChefDetails.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,8 +23,12 @@ const router = createBrowserRouter([
         loader: () => fetch("/data.json")
       },
       { path: "/blog", element: <Blog /> },
-      { path: "/chefs", element: <Chefs /> },
-      { path: "/chef/:id/view_recipies", element: <Chef /> },
+      {
+        path: "/chefs",
+        element: <Chefs />,
+        loader: () => fetch("/data.json")
+      },
+      { path: "/chef/:id/view_recipies", element: <ChefDetails /> },
       { path: "user/login", element: <Login /> },
       { path: "user/registration", element: <Registration /> }
     ]

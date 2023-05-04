@@ -10,7 +10,7 @@ const ChefSection = ({ chefData }) => {
                 <hr className='border border-primary w-52 mx-auto text-center' />
             </div>
             <div className='grid grid-cols-3 gap-5'>
-                {chefData.slice(3, 6).map(chef => <Chef key={chef.id} {...chef} />)}
+                {chefData.map(chef => <Chef key={chef.id} {...chef} />)}
             </div>
             <Link to="/chefs" className='text-center block'>
                 <button className='btn btn-primary'>see all chefs</button>
