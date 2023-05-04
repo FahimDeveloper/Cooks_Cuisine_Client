@@ -9,3 +9,9 @@
 .hoverEffect {
     @apply transition-all duration-75 ease-linear
 }
+
+.home {
+    background-image: url("/src/assets/images/homeBanner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
