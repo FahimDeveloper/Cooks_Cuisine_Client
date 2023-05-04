@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const BannerSection = () => {
     return (
@@ -11,7 +12,9 @@ const BannerSection = () => {
                     <p className='text-xl'>
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit asperiores temporibus suscipit assumenda modi consectetur?
                     </p>
-                    <button className='btn btn-primary'>Find chef</button>
+                    <button className='btn btn-primary'>
+                        <Link to="/chefs">Find chef</Link>
+                    </button>
                 </div>
             </div>
         </div>
