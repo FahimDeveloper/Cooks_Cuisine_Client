@@ -23,7 +23,7 @@ const Chefs = () => {
                         <h2 className='md:text-4xl text-3xl italic text-center font-bold uppercase'>Our Chefs</h2>
                         <hr className='border border-primary w-52 mx-auto text-center' />
                     </div>
-                    <div className='grid md:grid-cols-3 sm:grid-cols-2 gap-5'>
+                    <div className='grid lg:grid-cols-3 sm:grid-cols-2 gap-5'>
                         {chefData.map(chef => <SingleChef key={chef.id} {...chef} />)}
                     </div>
                 </div>

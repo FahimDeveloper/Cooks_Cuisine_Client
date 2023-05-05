@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .active {
-    @apply border-b-2 border-b-primary
+    @apply border-2 border-primary rounded-xl px-3 py-1 bg-white text-neutral
 }
 
 .hoverEffect {

@@ -13,6 +13,8 @@ import Login from './components/Login/Login.jsx';
 import Registration from './components/Login/Registration.jsx';
 import ChefDetails from './components/Chefs/ChefDetails.jsx';
 import Error from './components/Error/Error.jsx';
+import AuthProviders from './AuthProviders/AuthProviders.jsx';
+import PrivateRoutes from './Routes/PrivetRoute.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/chef/:id/view_recipies",
-        element: <ChefDetails />,
+        element: <PrivateRoutes><ChefDetails /></PrivateRoutes>,
         loader: () => fetch("/data.json")
       },
       { path: "user/login", element: <Login /> },
@@ -47,6 +49,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProviders>
+      <RouterProvider router={router}></RouterProvider>
+    </AuthProviders>
   </React.StrictMode>,
 )

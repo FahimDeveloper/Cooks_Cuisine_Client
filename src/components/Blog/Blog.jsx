@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { useLoaderData, useNavigation } from 'react-router-dom';
 import LoadSpinner from '../LoadSpinner/LoadSpinner';
 import { useState } from 'react';
+import Pdf from "react-to-pdf";
 
 const Blog = () => {
     const questionData = useLoaderData();
@@ -13,6 +14,7 @@ const Blog = () => {
     if (load === true || loader.state === "loading") {
         return <LoadSpinner />
     }
+    const ref = createRef();
     return (
         <div>
             <div className='blogBanner flex justify-center items-center h-[500px] bg-black bg-opacity-40 bg-blend-overlay'>
@@ -24,17 +26,20 @@ const Blog = () => {
                     <hr className='border border-primary w-28 mx-auto text-center' />
                 </div>
                 <div className='flex justify-end'>
-                    <button className='btn btn-primary text-xs flex gap-2'>
-                        Download content pdf <i className="fa-solid fa-download"></i>
-                    </button>
+                    <Pdf targetRef={ref} filename="blog_content.pdf">
+                        {({ toPdf }) =>
+                            <button className='btn btn-primary text-xs' onClick={toPdf}>
+                                Download content pdf <i className="fa-solid fa-download"></i>
+                            </button>}
+                    </Pdf>
                 </div>
-                <div className='grid md:grid-cols-2 gap-5'>
+                <div ref={ref} className='grid md:grid-cols-2 gap-5'>
                     {questionData.map(question => {
                         return (
                             <div key={question.id} className="card bg-base-100 border border-primary shadow-xl">
-                                <div className="card-body">
+                                <div className="card-body space-y-3">
                                     <h2 className="card-title">{question.id}. {question.question}</h2>
-                                    <p>{question.answer}</p>
+                                    <p className='text-justify'>{question.answer}</p>
                                 </div>
                             </div>
                         )
