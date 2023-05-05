@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../AuthProviders/AuthProviders';
+import NonUser from "../../assets/images/nonUser.jpg"
 
 
 const Header = () => {
@@ -30,7 +31,7 @@ const Header = () => {
                     }
                     <div>
                         {
-                            user ? <img className='w-1/2 h-1/2 rounded-full border cursor-pointer' title={user ? user.displayName : ""} src={user ? user.photoURL : ""} alt="image" /> : ""
+                            user ? <img className='w-14 h-14 rounded-full border cursor-pointer object-cover' title={user ? user.displayName : ""} src={user.photoURL ? user.photoURL : NonUser} alt="image" /> : ""
                         }
                     </div>
                 </div>
@@ -41,7 +42,7 @@ const Header = () => {
                         </svg>
                     </div>
                     {
-                        user ? <img className='w-2/5 h-2/5 rounded-full border cursor-pointer' title={user ? user.displayName : ""} src={user ? user.photoURL : ""} alt="image" /> : ""
+                        user ? <img className='w-14 h-14 rounded-full border cursor-pointer object-cover' title={user ? user.displayName : ""} src={user.photoURL ? user.photoURL : NonUser} alt="image" /> : ""
                     }
                 </div>
             </div>
@@ -57,19 +58,4 @@ const Header = () => {
         </div>
     );
 };
-// {
-//     "version": 2,
-//     "builds": [
-//       {
-//         "src": "index.js",
-//         "use": "@vercel/node"
-//       }
-//     ],
-//     "routes": [
-//       {
-//         "src": "/(.*)",
-//         "dest": "index.js"
-//       }
-//     ]
-//   }
 export default Header;

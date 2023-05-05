@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import LoadSpinner from '../LoadSpinner/LoadSpinner';
 import { AuthContext } from '../../AuthProviders/AuthProviders';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
     const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
@@ -25,7 +26,9 @@ const Login = () => {
         signIn(email, password)
             .then(userCredential => {
                 const user = userCredential.user;
-                // toast.success(Welcome ${ user.displayName ? user.displayName : user.email }!);
+                toast.success(`Welcome ${user.displayName ? user.displayName : user.email}!`, {
+                    position: toast.POSITION.TOP_RIGHT
+                });
                 navigate(from, { replace: true })
                 e.target.reset()
             })
@@ -39,7 +42,9 @@ const Login = () => {
         signInWithGoogle()
             .then(result => {
                 const user = result.user;
-                // toast.success(Welcome ${ user.displayName ? user.displayName : user.email }!);
+                toast.success(`Welcome ${user.displayName ? user.displayName : user.email}!`, {
+                    position: toast.POSITION.TOP_RIGHT
+                });
                 navigate(from, { replace: true })
             })
             .catch(error => {
@@ -52,7 +57,9 @@ const Login = () => {
         signInWithGithub()
             .then(result => {
                 const user = result.user;
-                // toast.success(Welcome ${ user.displayName ? user.displayName : user.email }!);
+                toast.success(`Welcome ${user.displayName ? user.displayName : user.email}!`, {
+                    position: toast.POSITION.TOP_RIGHT
+                });
                 navigate(from, { replace: true })
             })
             .catch(error => {
@@ -68,7 +75,9 @@ const Login = () => {
     }
     return (
         <div className='container mx-auto flex justify-center items-center h-screen'>
+            <ToastContainer />
             <div className='space-y-6 border border-primary md:py-10 p-5 md:px-16 rounded-lg'>
+                <p className='text-error'>{error}</p>
                 <h3 className='text-2xl font-medium text-center'>Sign In</h3>
                 <form onSubmit={handleLogin} className='flex flex-col md:space-y-5 space-y-3'>
                     <input name='email' type="email" placeholder='Email' className='border border-primary px-5 md:py-2 py-1 rounded-lg' />
@@ -89,7 +98,7 @@ const Login = () => {
                             </button>
                         </Link>
                         <Link>
-                            <button className='border border-primary w-full text-center py-1 rounded-lg my-2'>
+                            <button onClick={handleGithubSignIn} className='border border-primary w-full text-center py-1 rounded-lg my-2'>
                                 <i className="fa-brands fa-github"></i> Sign in with Github
                             </button>
                         </Link>

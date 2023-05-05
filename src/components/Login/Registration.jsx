@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import LoadSpinner from '../LoadSpinner/LoadSpinner';
 import { AuthContext } from '../../AuthProviders/AuthProviders';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Registration = () => {
     const { createUser, updateUser, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
@@ -32,7 +33,9 @@ const Registration = () => {
                 const createdUser = result.user;
                 updateUser(name, photo)
                     .then(() => {
-                        // toast.success('Account created successfully');
+                        toast.success('Account created successfully', {
+                            position: toast.POSITION.TOP_RIGHT
+                        });
                         navigate(from, { replace: true });
                         form.reset();
                     })
@@ -49,8 +52,9 @@ const Registration = () => {
         event.preventDefault();
         signInWithGoogle()
             .then(result => {
-                // toast.success('Signed in successfully');
-                const user = result.user;
+                toast.success('Signed in successfully', {
+                    position: toast.POSITION.TOP_RIGHT
+                });
                 navigate(from, { replace: true })
             })
             .catch(error => {
@@ -62,9 +66,9 @@ const Registration = () => {
         event.preventDefault();
         signInWithGithub()
             .then(result => {
-                // toast.success('Signed in successfully');
-                const user = result.user;
-                console.log(user);
+                toast.success('Signed in successfully', {
+                    position: toast.POSITION.TOP_RIGHT
+                });
                 navigate(from, { replace: true })
             })
             .catch(error => {
@@ -80,8 +84,9 @@ const Registration = () => {
     }
     return (
         <div className='container mx-auto flex justify-center items-center h-screen'>
+            <ToastContainer />
             <div className='space-y-6 border border-primary md:py-10 p-5 md:px-16 rounded-lg'>
-                <p>{error}</p>
+                <p className='text-error'>{error}</p>
                 <h3 className='text-2xl font-medium text-center'>Sign Up</h3>
                 <form onSubmit={handleRegister} className='flex flex-col md:space-y-5 space-y-3'>
                     <input name='name' type="text" placeholder='Name' className='border border-primary px-5 md:pr-28 w-full md:py-2 py-1 rounded-lg' />
@@ -101,7 +106,7 @@ const Registration = () => {
                             </button>
                         </Link>
                         <Link>
-                            <button className='border border-primary w-full text-center py-1 rounded-lg my-2'>
+                            <button onClick={handleGithubSignIn} className='border border-primary w-full text-center py-1 rounded-lg my-2'>
                                 <i className="fa-brands fa-github"></i> Sign Up with Github
                             </button>
                         </Link>
