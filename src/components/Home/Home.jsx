@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import BannerSection from './BannerSection/BannerSection';
 import ChefSection from './ChefSection/ChefSection';
-import { useLoaderData, useNavigation } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import SliderSection from './SliderSection/SliderSection';
 import LoadSpinner from '../LoadSpinner/LoadSpinner';
 
@@ -10,7 +10,7 @@ const Home = () => {
     const [load, setLoad] = useState(true);
     setTimeout(() => {
         setLoad(false)
-    }, 800)
+    }, 500)
     if (load === true) {
         return <LoadSpinner />
     } else {

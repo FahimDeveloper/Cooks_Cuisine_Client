@@ -9,13 +9,13 @@ const Chefs = () => {
     const [load, setLoad] = useState(true);
     setTimeout(() => {
         setLoad(false)
-    }, 800)
+    }, 500)
     if (load === true || loader.state === "loading") {
         return <LoadSpinner />
     } else {
         return (
             <div>
-                <div className='chefBanner bg-black bg-opacity-30 bg-blend-overlay h-[600px] flex items-center justify-center'>
+                <div className='chefBanner bg-black bg-opacity-30 bg-blend-overlay h-[500px] flex items-center justify-center'>
                     <h2 className='text-5xl font-medium uppercase italic text-base-100 text-center'>view all chefs</h2>
                 </div>
                 <div className='container mx-auto py-16 space-y-8'>

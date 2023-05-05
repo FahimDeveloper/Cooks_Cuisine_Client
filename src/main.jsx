@@ -12,17 +12,23 @@ import Chefs from './components/Chefs/Chefs.jsx';
 import Login from './components/Login/Login.jsx';
 import Registration from './components/Login/Registration.jsx';
 import ChefDetails from './components/Chefs/ChefDetails.jsx';
+import Error from './components/Error/Error.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
         element: <Home />,
         loader: () => fetch("/data.json")
       },
-      { path: "/blog", element: <Blog /> },
+      {
+        path: "/blog",
+        element: <Blog />,
+        loader: () => fetch("/question.json")
+      },
       {
         path: "/chefs",
         element: <Chefs />,

@@ -6,7 +6,7 @@ const Login = () => {
     const [load, setLoad] = useState(true);
     setTimeout(() => {
         setLoad(false)
-    }, 800)
+    }, 500)
     if (load === true) {
         return <LoadSpinner />
     }

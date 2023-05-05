@@ -12,9 +12,9 @@ const BannerSection = () => {
                     <p className='text-xl'>
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit asperiores temporibus suscipit assumenda modi consectetur?
                     </p>
-                    <button className='btn btn-primary'>
-                        <Link to="/chefs">Find chef</Link>
-                    </button>
+                    <Link to="/chefs">
+                        <button className='btn btn-primary'>Find chef</button>
+                    </Link>
                 </div>
             </div>
         </div>

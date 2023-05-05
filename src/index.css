@@ -32,3 +32,10 @@
 .chef:hover .view {
     @apply text-primary
 }
+
+.blogBanner {
+    background-image: url("/src/assets/images/singleChef.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+}
