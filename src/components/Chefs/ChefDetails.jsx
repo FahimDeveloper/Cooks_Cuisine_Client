@@ -12,10 +12,12 @@ const ChefDetails = () => {
     const findChefData = chefDetailsData.find(Details => Details.id == id);
     const { chef_name, chef_picture, description, likes, num_of_recipes, recipes, years_of_experience } = findChefData
     const [load, setLoad] = useState(true);
+    const [isDisabled, setDisabled] = useState(false)
     setTimeout(() => {
         setLoad(false)
     }, 500);
     const handleAddToFavourite = () => {
+        setDisabled(true)
         toast.success("Add This item in Favourite", {
             position: toast.POSITION.TOP_RIGHT
         });
@@ -74,8 +76,8 @@ const ChefDetails = () => {
                                         </div>
                                         <div className='flex justify-between'>
                                             <p>Rating {item.rating}</p>
-                                            <button onClick={handleAddToFavourite}>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 cursor-pointer text-primary mx-auto">
+                                            <button onClick={handleAddToFavourite} disabled={isDisabled}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-6 h-6 cursor-pointer mx-auto ${isDisabled ? `text-gray-400` : `text-primary`}`}>
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
                                                 </svg>
                                             </button>
