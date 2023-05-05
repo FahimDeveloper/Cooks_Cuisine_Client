@@ -7,7 +7,7 @@ const PrivateRoutes = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     const location = useLocation();
     if (loading) {
-        <LoadSpinner />
+        return <LoadSpinner />
     }
     if (user) {
         return children;
