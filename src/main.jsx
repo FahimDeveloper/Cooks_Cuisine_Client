@@ -24,7 +24,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("/data.json")
+        loader: () => fetch("https://assignment-10-server-murex.vercel.app/allData")
       },
       {
         path: "/blog",
@@ -34,12 +34,12 @@ const router = createBrowserRouter([
       {
         path: "/chefs",
         element: <Chefs />,
-        loader: () => fetch("/data.json")
+        loader: () => fetch("https://assignment-10-server-murex.vercel.app/allData")
       },
       {
         path: "/chef/:id/view_recipies",
         element: <PrivateRoutes><ChefDetails /></PrivateRoutes>,
-        loader: () => fetch("/data.json")
+        loader: () => fetch("https://assignment-10-server-murex.vercel.app/allData")
       },
       { path: "user/login", element: <Login /> },
       { path: "user/registration", element: <Registration /> }
