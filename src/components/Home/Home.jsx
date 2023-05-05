@@ -4,6 +4,7 @@ import ChefSection from './ChefSection/ChefSection';
 import { useLoaderData } from 'react-router-dom';
 import SliderSection from './SliderSection/SliderSection';
 import LoadSpinner from '../LoadSpinner/LoadSpinner';
+import AboutChefs from './AboutChefs/AboutChefs';
 
 const Home = () => {
     const chefData = useLoaderData();
@@ -19,6 +20,7 @@ const Home = () => {
                 <BannerSection />
                 <SliderSection />
                 <ChefSection chefData={chefData} />
+                <AboutChefs />
             </div>
         );
     }
