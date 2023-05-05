@@ -12,13 +12,13 @@ const Registration = () => {
     }
     return (
         <div className='container mx-auto flex justify-center items-center h-screen'>
-            <div className='space-y-6 border border-primary py-10 px-16 rounded-lg'>
+            <div className='space-y-6 border border-primary md:py-10 p-5 md:px-16 rounded-lg'>
                 <h3 className='text-2xl font-medium text-center'>Sign Up</h3>
-                <form className='flex flex-col space-y-5'>
-                    <input type="text" placeholder='Name' className='border border-primary px-5 pr-28 py-2 rounded-lg' />
-                    <input type="email" placeholder='Email' className='border border-primary px-5 pr-28 py-2 rounded-lg' />
-                    <input type="password" placeholder='Password' className='border border-primary px-5 pr-28 py-2 rounded-lg' />
-                    <input type="text" placeholder='Photo url' className='border border-primary px-5 pr-28 py-2 rounded-lg' />
+                <form className='flex flex-col md:space-y-5 space-y-3'>
+                    <input type="text" placeholder='Name' className='border border-primary px-5 md:pr-28 w-full md:py-2 py-1 rounded-lg' />
+                    <input type="email" placeholder='Email' className='border border-primary px-5 md:pr-28 w-full md:py-2 py-1 rounded-lg' />
+                    <input type="password" placeholder='Password' className='border border-primary px-5 md:pr-28 w-full md:py-2 py-1 rounded-lg' />
+                    <input type="text" placeholder='Photo url' className='border border-primary px-5 md:pr-28 w-full md:py-2 py-1 rounded-lg' />
                     <button type='submit' className='btn-primary py-1 rounded-lg text-lg'>Sign Up</button>
                     <div className='flex justify-center items-center gap-x-5'>
                         <hr className='w-2/5' />

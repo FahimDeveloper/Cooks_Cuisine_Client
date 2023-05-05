@@ -28,14 +28,14 @@ const ChefDetails = () => {
     return (
         <div>
             <div className='singleChef h-[500px] flex justify-center items-center bg-black bg-opacity-60 bg-blend-overlay'>
-                <h2 className='text-primary text-5xl font-medium'>view details of {chef_name}</h2>
+                <h2 className='text-primary md:text-5xl text-4xl text-center font-medium'>view details of {chef_name}</h2>
             </div>
-            <div className='container mx-auto py-16 space-y-10'>
-                <div className='grid grid-cols-2 gap-10 items-center'>
+            <div className='container mx-auto md:py-16 py-10 space-y-10'>
+                <div className='grid lg:grid-cols-2 md:gap-10 gap-5 items-center'>
                     <div>
                         <img src={chef_picture} className='w-full' alt={chef_name} />
                     </div>
-                    <div className='space-y-5'>
+                    <div className='md:space-y-5 space-y-2'>
                         <h3 className='text-4xl font-medium'>{chef_name}</h3>
                         <p className='text-lg'>Total Recipies : {num_of_recipes}</p>
                         <p className='text-lg'>Years of Experience : {years_of_experience}</p>

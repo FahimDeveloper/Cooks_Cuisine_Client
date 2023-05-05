@@ -3,17 +3,19 @@ import slider1 from "../../../assets/images/slider1.jpg"
 import slider2 from "../../../assets/images/slider2.jpg"
 import slider3 from "../../../assets/images/slider3.jpg"
 import slider4 from "../../../assets/images/slider4.jpg"
+import Logo from "../../../assets/images/logo.png"
 
 const SliderSection = () => {
     return (
-        <div className='container mx-auto space-y-10 py-16'>
+        <div className='container mx-auto space-y-10 md:py-16 py-10'>
             <div className='space-y-3'>
-                <h2 className='text-4xl italic text-center font-bold uppercase'>delicious food</h2>
+                <h2 className='md:text-4xl text-3xl italic text-center font-bold uppercase'>delicious food</h2>
                 <hr className='border border-primary w-52 mx-auto text-center' />
             </div>
-            <div className='grid grid-cols-2 items-center gap-x-10'>
-                <div>
-                    <h2 className='text-4xl text-justify font-medium'>
+            <div className='grid lg:grid-cols-2 items-center lg:gap-10 gap-5'>
+                <div className='flex flex-col justify-center items-center gap-5'>
+                    <img className='md:w-1/3 w-1/2' src={Logo} alt="Logo" />
+                    <h2 className='md:text-4xl text-2xl text-center font-medium'>
                         Indulge in the rich and savory flavors of our delicious food, <span className='text-primary'>crafted to satisfy your cravings and delight your senses</span>
                     </h2>
                 </div>

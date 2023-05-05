@@ -11,15 +11,17 @@
 }
 
 .home {
-    background-image: url("/src/assets/images/homeBanner.jpg");
+    background-image: url("/src/assets/images/singleChef.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position-y: bottom;
 }
 
 .chefBanner {
-    background-image: url("/src/assets/images/chefBanner.jpg");
+    background-image: url("/src/assets/images/singleChef.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position-y: center;
 }
 
 .singleChef {
@@ -34,8 +36,15 @@
 }
 
 .blogBanner {
-    background-image: url("/src/assets/images/singleChef.jpg");
+    background-image: url("/src/assets/images/blogBanner.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position-y: bottom;
+    background-position-y: top;
+}
+
+@media all and (max-width:768px) {
+    .container {
+        width: 85%;
+        margin: auto;
+    }
 }
