@@ -84,7 +84,7 @@ const Login = () => {
                     </div>
                     <div className='space-y-3'>
                         <Link>
-                            <button className='border border-primary w-full text-center py-1 rounded-lg my-2'>
+                            <button onClick={handleGoogleSignIn} className='border border-primary w-full text-center py-1 rounded-lg my-2'>
                                 <i className="fa-brands fa-google"></i> Sign in with Google
                             </button>
                         </Link>

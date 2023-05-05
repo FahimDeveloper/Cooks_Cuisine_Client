@@ -51,7 +51,6 @@ const Registration = () => {
             .then(result => {
                 // toast.success('Signed in successfully');
                 const user = result.user;
-                console.log(user);
                 navigate(from, { replace: true })
             })
             .catch(error => {
@@ -97,7 +96,7 @@ const Registration = () => {
                     </div>
                     <div className='space-y-3'>
                         <Link>
-                            <button className='border border-primary w-full text-center py-1 rounded-lg my-2'>
+                            <button onClick={handleGoogleSignIn} className='border border-primary w-full text-center py-1 rounded-lg my-2'>
                                 <i className="fa-brands fa-google"></i> Sign Up with Google
                             </button>
                         </Link>

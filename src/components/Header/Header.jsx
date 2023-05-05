@@ -14,26 +14,8 @@ const Header = () => {
             })
     }
     const [open, setOpen] = useState(false)
-    const navMenu = [
-        {
-            path: '/',
-            title: 'Home'
-        },
-        {
-            path: '/blog',
-            title: 'Blog'
-        },
-        {
-            path: '/chefs',
-            title: 'Chefs'
-        },
-        {
-            path: 'user/login',
-            title: 'Login'
-        }
-    ];
     return (
-        <div className='bg-neutral text-base-100 py-5 h-16 w-full sticky top-0 z-50'>
+        <div className='bg-neutral text-base-100 py-4 w-full sticky top-0 z-50'>
             <div className='container mx-auto flex items-center justify-between'>
                 <div>
                     <Link to="/" className='capitalize text-3xl font-medium italic'>cooks <span className='text-primary'>cuisine</span></Link>
@@ -43,25 +25,51 @@ const Header = () => {
                     <NavLink className={`text-lg hover:border-b-primary hover:border-b-2 hoverEffect ${({ isActive }) => isActive ? "active" : ""}`} to="/blog">Blog</NavLink>
                     <NavLink className={`text-lg hover:border-b-primary hover:border-b-2 hoverEffect ${({ isActive }) => isActive ? "active" : ""}`} to="/chefs">Chefs</NavLink>
                     {
-                        user ? <div onClick={handleLogOut} className={`text-lg hover:border-b-primary hover:border-b-2 hoverEffect`}>Logout</div> :
+                        user ? <div onClick={handleLogOut} className={`text-lg hover:border-b-primary hover:border-b-2 hoverEffect cursor-pointer`}>Logout</div> :
                             <NavLink className={`text-lg hover:border-b-primary hover:border-b-2 hoverEffect ${({ isActive }) => isActive ? "active" : ""}`} to="user/login">Login</NavLink>
                     }
+                    <div>
+                        {
+                            user ? <img className='w-1/2 h-1/2 rounded-full border cursor-pointer' title={user ? user.displayName : ""} src={user ? user.photoURL : ""} alt="image" /> : ""
+                        }
+                    </div>
                 </div>
-                <div onClick={() => setOpen(!open)} className='flex md:hidden'>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                    </svg>
+                <div className='flex justify-end items-center gap-x-5 md:hidden'>
+                    <div onClick={() => setOpen(!open)}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </div>
+                    {
+                        user ? <img className='w-2/5 h-2/5 rounded-full border cursor-pointer' title={user ? user.displayName : ""} src={user ? user.photoURL : ""} alt="image" /> : ""
+                    }
                 </div>
             </div>
             <div className={`bg-neutral text-center space-y-3 absolute duration-300 w-full md:hidden flex flex-col py-5 ${open ? `top-full` : `-top-52`}`}>
-                {navMenu.map((navItem, index) => {
-                    return (
-                        <NavLink key={index} onClick={() => setOpen(!open)} className={`text-lg hoverEffect ${({ isActive }) => isActive ? "active" : ""}`} to={navItem.path}>{navItem.title}</NavLink>
-                    )
-                })}
+                <NavLink onClick={() => setOpen(!open)} className={`text-lg hover:border-b-primary hover:border-b-2 hoverEffect ${({ isActive }) => isActive ? "active" : ""}`} to="/">Home</NavLink>
+                <NavLink onClick={() => setOpen(!open)} className={`text-lg hover:border-b-primary hover:border-b-2 hoverEffect ${({ isActive }) => isActive ? "active" : ""}`} to="/blog">Blog</NavLink>
+                <NavLink onClick={() => setOpen(!open)} className={`text-lg hover:border-b-primary hover:border-b-2 hoverEffect ${({ isActive }) => isActive ? "active" : ""}`} to="/chefs">Chefs</NavLink>
+                {
+                    user ? <div onClick={handleLogOut} className={`text-lg hover:border-b-primary hover:border-b-2 hoverEffect`}>Logout</div> :
+                        <NavLink className={`text-lg hover:border-b-primary hover:border-b-2 hoverEffect ${({ isActive }) => isActive ? "active" : ""}`} to="user/login">Login</NavLink>
+                }
             </div>
         </div>
     );
 };
-
+// {
+//     "version": 2,
+//     "builds": [
+//       {
+//         "src": "index.js",
+//         "use": "@vercel/node"
+//       }
+//     ],
+//     "routes": [
+//       {
+//         "src": "/(.*)",
+//         "dest": "index.js"
+//       }
+//     ]
+//   }
 export default Header;
