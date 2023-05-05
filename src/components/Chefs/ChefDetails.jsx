@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useLoaderData, useNavigation, useParams } from 'react-router-dom';
 import LoadSpinner from '../LoadSpinner/LoadSpinner';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Logo from "../../assets/images/Logo2.jpg"
 
 const ChefDetails = () => {
     const { id } = useParams();
@@ -15,9 +15,7 @@ const ChefDetails = () => {
     setTimeout(() => {
         setLoad(false)
     }, 500);
-    const [disabled, setDisabled] = useState(false);
     const handleAddToFavourite = () => {
-        setDisabled(!disabled)
         toast.success("Add This item in Favourite", {
             position: toast.POSITION.TOP_RIGHT
         });
@@ -43,30 +41,23 @@ const ChefDetails = () => {
                         <p className='text-lg'>Description :  {description}</p>
                     </div>
                 </div>
-                <div className="overflow-x-auto space-y-5">
+                <div className="space-y-5">
                     <div className='space-y-2'>
                         <h2 className='text-3xl italic text-center font-medium uppercase'>preview all recipes of {chef_name}</h2>
                         <hr className='border border-primary w-96 mx-auto text-center' />
                     </div>
-                    <table className="table w-full">
-                        <thead>
-                            <tr>
-                                <th>$</th>
-                                <th>Name</th>
-                                <th>Ingredients</th>
-                                <th>Cooking Method</th>
-                                <th>Rating</th>
-                                <th>Add To Favourite</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                recipes.map((item, index) => {
-                                    return (
-                                        <tr key={index}>
-                                            <th>{index + 1}</th>
-                                            <td>{item.recipe_name}</td>
-                                            <td>
+                    <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-5'>
+                        {
+                            recipes.map((item, index) => {
+                                return (
+                                    <div key={index} className="card bg-base-100 shadow-xl p-5 border border-primary">
+                                        <div className="card-body space-y-3">
+                                            <div>
+                                                <img className='w-1/2 mx-auto' src={Logo} alt="" />
+                                            </div>
+                                            <h2 className="card-title">{item.recipe_name}</h2>
+                                            <div className='space-y-2'>
+                                                <p className='text-xl font-medium'>Ingredients</p>
                                                 <ol className='list-disc'>
                                                     {item.ingredients.map((gredients, index) => {
 
@@ -75,24 +66,25 @@ const ChefDetails = () => {
                                                         )
                                                     })}
                                                 </ol>
-                                            </td>
-                                            <td className='whitespace-pre-wrap'>{item.cooking_method ? item.cooking_method : "No method available"}</td>
-                                            <td>
-                                                {item.rating}
-                                            </td>
-                                            <td>
-                                                <button onClick={handleAddToFavourite} disabled={disabled}>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 cursor-pointer text-primary mx-auto">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-                                                    </svg>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    )
-                                })
-                            }
-                        </tbody>
-                    </table>
+                                            </div>
+                                            <div className='space-y-2'>
+                                                <p className='text-xl font-medium'>Cooking Method</p>
+                                                <p>{item.cooking_method ? item.cooking_method : "No method available"}</p>
+                                            </div>
+                                        </div>
+                                        <div className='flex justify-between'>
+                                            <p>Rating {item.rating}</p>
+                                            <button onClick={handleAddToFavourite}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 cursor-pointer text-primary mx-auto">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
                 </div>
             </div>
             <ToastContainer />
